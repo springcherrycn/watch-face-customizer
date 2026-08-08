@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpringCherry Watch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="watch-container">
+        <!-- 表盘：必须保留这个 div -->
+        <div id="watchFace" class="watch-face">
+            <button class="settings-btn" id="settingsBtn">⚙️</button>
+            <div class="hand hour-hand" id="hourHand"></div>
+            <div class="hand minute-hand" id="minuteHand"></div>
+            <div class="hand second-hand" id="secondHand"></div>
+            <div class="center-dot"></div>
+            <div class="bg-image-layer" id="bgImageLayer"></div>
+        </div>
+
+        <div class="brand-name">SpringCherry</div>
+
+        <div class="settings-menu" id="settingsMenu">
+            <div class="menu-item" id="langToggle"><span>English / 中文</span></div>
+            <div class="menu-item">
+                <label id="labelDial">表盘样式</label>
+                <select id="dialStyle"></select>
+            </div>
+            <div class="menu-item">
+                <label id="labelRegion">地区选择</label>
+                <input type="text" id="countrySelect" placeholder="选择地区">
+            </div>
+            <div class="menu-item">
+                <label id="labelBg">背景更换</label>
+                <div class="input-with-btn">
+                    <input type="text" id="bgImageUrl" placeholder="粘贴图片链接 (.jpg/.png)">
+                    <button id="pasteBtn">粘贴</button>
+                </div>
+                <p class="hint" id="bgHint">请自行前往 SM.MS或ImgBB 上传图片，复制图片链接后点击粘贴</p>
+            </div>
+            <div class="menu-item about-us">
+                <h4 id="labelAbout">关于我们</h4>
+                <p id="aboutText">春天樱桃是银河律动旗下一个音乐周边文创品牌，我们的产品好听、好玩。</p>
+                <p class="contact" id="contactText">联系我们：springcherry@126.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
