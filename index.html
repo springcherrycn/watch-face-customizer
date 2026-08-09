@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpringCherry Watch Face</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- 主表盘区域（完全固定，不被菜单影响） -->
+        <div class="main-display">
+            <!-- 表盘（12个刻度，无数字） -->
+            <div class="watch-face" id="watchFace">
+                <div class="hand hour-hand"></div>
+                <div class="hand minute-hand"></div>
+                <div class="hand second-hand"></div>
+                <div class="center-dot"></div>
+            </div>
+
+            <!-- Settings按钮（位于表盘右上角上方，超半径距离） -->
+            <button class="settings-launcher" id="openSettings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path>
+                </svg>
+            </button>
+
+            <!-- 半透明下拉菜单（从按钮下方滑出） -->
+            <div class="settings-panel" id="settingsPanel">
+                <div class="panel-header">
+                    <h3>Watch Settings</h3>
+                    <button class="close-btn" id="closePanel">&times;</button>
+                </div>
+
+                <div class="setting-group">
+                    <label id="labelLang">语言</label>
+                    <select id="langSelect">
+                        <!-- 20种主流语言，中文第一，英文第二 -->
+                        <option value="zh-CN" selected>中文（简体）</option>
+                        <option value="en">English</option>
+                        <option value="ja">日本語</option>
+                        <option value="ko">한국어</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="ru">Русский</option>
+                        <option value="pt">Português</option>
+                        <option value="it">Italiano</option>
+                        <option value="ar">العربية</option>
+                        <option value="hi">हिन्दी</option>
+                        <option value="th">ไทย</option>
+                        <option value="tr">Türkçe</option>
+                        <option value="vi">Tiếng Việt</option>
+                        <option value="pl">Polski</option>
+                        <option value="nl">Nederlands</option>
+                        <option value="sv">Svenska</option>
+                        <option value="el">Ελληνικά</option>
+                        <option value="cs">Čeština</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label id="labelRegion">时区设置</label>
+                    <select id="regionSelect">
+                        <option value="-12">UTC-12:00</option>
+                        <option value="-11">UTC-11:00</option>
+                        <option value="-10">UTC-10:00 (HST)</option>
+                        <option value="-9">UTC-09:00 (AKST)</option>
+                        <option value="-8">UTC-08:00 (PST)</option>
+                        <option value="-7">UTC-07:00 (MST)</option>
+                        <option value="-6">UTC-06:00 (CST)</option>
+                        <option value="-5">UTC-05:00 (EST)</option>
+                        <option value="-4">UTC-04:00 (AST)</option>
+                        <option value="0">UTC+00:00 (GMT)</option>
+                        <option value="1">UTC+01:00 (CET)</option>
+                        <option value="2">UTC+02:00 (EET)</option>
+                        <option value="3">UTC+03:00 (MSK)</option>
+                        <option value="4">UTC+04:00</option>
+                        <option value="5">UTC+05:00</option>
+                        <option value="6">UTC+06:00</option>
+                        <option value="7">UTC+07:00</option>
+                        <option value="8" selected>UTC+08:00 (北京)</option>
+                        <option value="9">UTC+09:00 (东京)</option>
+                        <option value="10">UTC+10:00</option>
+                        <option value="11">UTC+11:00</option>
+                        <option value="12">UTC+12:00</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label id="labelDial">表盘颜色</label>
+                    <select id="dialStyleSelect">
+                        <option value="#000000">黑色（默认）</option>
+                        <option value="#FFFFFF">白色</option>
+                        <option value="random">🎨 随机颜色</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label id="labelBg">背景图片</label>
+                    <div class="input-with-btn">
+                        <input type="text" id="bgImageUrl" placeholder="粘贴图片链接...">
+                        <button id="pasteBtn">粘贴</button>
+                    </div>
+                    <p class="hint" id="bgHint">请前往SM.MS或 ImgBB等网站上传图片，复制图片链接后点击粘贴</p>
+                </div>
+
+                <div class="setting-group">
+                    <label id="labelAbout">关于我们</label>
+                    <div class="about-card">
+                        <small id="aboutText">一款极简风格的智能手表表盘，由中国大陆音乐周边品牌SpringCherry设计。SpringCherry享有知识产权，侵权必究。邮箱：springcherry@126.com</small>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="saveSettings" id="saveBtn">应用并关闭</button>
+            </div>
+
+            <!-- 底部品牌文字（缩小一半+™标识） -->
+            <div class="brand-logo">SpringCherry™</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
