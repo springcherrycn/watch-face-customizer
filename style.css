@@ -1,0 +1,280 @@
+/* ===== 全局样式 ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* ===== 表盘样式 ===== */
+.watch-container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.watch-face {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #000;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+/* 刻度样式 (修复跑偏问题) */
+.tick {
+    position: absolute;
+    background-color: #fff;
+    transform-origin: bottom center;
+    left: 50%;
+    bottom: 50%;
+    margin-left: -1px; /* 修正刻度宽度的一半 */
+    width: 2px;
+    height: 15px;
+    border-radius: 1px;
+}
+
+/* 12个刻度的位置计算 */
+.tick:nth-child(1) { transform: translateY(160px) rotate(0deg); }
+.tick:nth-child(2) { transform: translateY(160px) rotate(30deg); }
+.tick:nth-child(3) { transform: translateY(160px) rotate(60deg); }
+.tick:nth-child(4) { transform: translateY(160px) rotate(90deg); }
+.tick:nth-child(5) { transform: translateY(160px) rotate(120deg); }
+.tick:nth-child(6) { transform: translateY(160px) rotate(150deg); }
+.tick:nth-child(7) { transform: translateY(160px) rotate(180deg); }
+.tick:nth-child(8) { transform: translateY(160px) rotate(210deg); }
+.tick:nth-child(9) { transform: translateY(160px) rotate(240deg); }
+.tick:nth-child(10) { transform: translateY(160px) rotate(270deg); }
+.tick:nth-child(11) { transform: translateY(160px) rotate(300deg); }
+.tick:nth-child(12) { transform: translateY(160px) rotate(330deg); }
+
+/* 表针样式 (修正居中问题) */
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-50%) rotate(0deg);
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.hour-hand {
+    width: 6px;
+    height: 80px;
+    background-color: #fff;
+    margin-left: -3px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.minute-hand {
+    width: 4px;
+    height: 110px;
+    background-color: #fff;
+    margin-left: -2px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.second-hand {
+    width: 2px;
+    height: 130px;
+    background-color: #ff4d6d;
+    margin-left: -1px;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+/* Logo */
+.logo {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ff4d6d;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 5;
+}
+
+/* ===== 控制面板样式 (不透明，缩小宽度) ===== */
+.control-panel {
+    background-color: #ffffff; /* 不透明白色背景 */
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px; /* 缩小三分之一，原450px左右 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    transition: opacity 0.3s;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+#settingsTitle {
+    font-size: 18px; /* 字体大50% */
+    font-weight: bold;
+    color: #333;
+}
+
+.gear-icon {
+    font-size: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.panel-content {
+    display: block; /* 默认显示 */
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group select,
+.form-group input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    border-color: #ff4d6d;
+}
+
+#pasteBtn {
+    padding: 8px 15px;
+    background-color: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    margin-top: 5px;
+    align-self: flex-start;
+}
+
+#pasteBtn:hover {
+    background-color: #e63950;
+}
+
+.about-text {
+    font-size: 12px; /* 缩小25% */
+    line-height: 1.4; /* 缩小行距 */
+    color: #666;
+    margin-top: 5px;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* ===== 下载按钮样式 ===== */
+.download-section {
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 300px;
+}
+
+.download-section h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 16px;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ff4d6d;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.download-btn:hover {
+    background-color: #e63950;
+}
+
+.tip {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #888;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+    .watch-container {
+        width: 280px;
+        height: 280px;
+    }
+    .tick:nth-child(1) { transform: translateY(130px) rotate(0deg); }
+    .tick:nth-child(2) { transform: translateY(130px) rotate(30deg); }
+    .tick:nth-child(3) { transform: translateY(130px) rotate(60deg); }
+    .tick:nth-child(4) { transform: translateY(130px) rotate(90deg); }
+    .tick:nth-child(5) { transform: translateY(130px) rotate(120deg); }
+    .tick:nth-child(6) { transform: translateY(130px) rotate(150deg); }
+    .tick:nth-child(7) { transform: translateY(130px) rotate(180deg); }
+    .tick:nth-child(8) { transform: translateY(130px) rotate(210deg); }
+    .tick:nth-child(9) { transform: translateY(130px) rotate(240deg); }
+    .tick:nth-child(10) { transform: translateY(130px) rotate(270deg); }
+    .tick:nth-child(11) { transform: translateY(130px) rotate(300deg); }
+    .tick:nth-child(12) { transform: translateY(130px) rotate(330deg); }
+    .hour-hand { height: 65px; }
+    .minute-hand { height: 90px; }
+    .second-hand { height: 105px; }
+    .control-panel, .download-section { width: 90%; }
+}
