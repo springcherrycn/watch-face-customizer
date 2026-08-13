@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpringCherry Watch</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="main-display">
+            <!-- 表盘 -->
+            <div class="watch-face theme-dark" id="watchFace">
+                <div id="ticks"></div>
+                <div class="hand hour-hand"></div>
+                <div class="hand minute-hand"></div>
+                <div class="hand second-hand"></div>
+                <div class="center-dot"></div>
+                <div class="bg-image-layer" id="bgImage"></div>
+            </div>
+
+            <!-- Settings 齿轮按钮 (唯一的开关) -->
+            <button class="settings-launcher" id="openSettings" title="Watch Settings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path>
+                </svg>
+            </button>
+
+            <!-- 下拉菜单 (无X按钮，无Apply&Close) -->
+            <div class="settings-panel" id="settingsPanel">
+                <div class="panel-header">
+                    <h3 id="panelTitle">Watch Settings</h3>
+                    <!-- 移除了关闭按钮 -->
+                </div>
+
+                <div class="setting-group">
+                    <label id="labelLang">Language Settings</label>
+                    <select id="langSelect">
+                        <option value="en" selected>English</option>
+                        <option value="zh-CN">中文简体</option>
+                        <option value="zh-TW">繁體中文</option>
+                    </select>
+                </div>
+
+                <div class="setting-group">
+                    <label id="labelRegion">Timezone</label>
+                    <select id="regionSelect"></select>
+                </div>
+
+                <div class="setting-group">
+                    <label id="labelDial">Dial Color</label>
+                    <select id="dialStyleSelect"></select>
+                </div>
+
+                <div class="setting-group">
+                    <label id="labelBg">Background Image</label>
+                    <div class="input-with-btn">
+                        <input type="text" id="bgImageUrl" placeholder="Paste image link...">
+                        <button id="pasteBtn">Paste</button>
+                    </div>
+                    <p class="hint" id="bgHint">Upload to SM.MS/ImgBB, copy link and click Paste</p>
+                </div>
+
+                <div class="setting-group">
+                    <label id="labelAbout">About</label>
+                    <div class="about-card">
+                        <small id="aboutText">A minimalist creative watch face designed by SpringCherry...</small>
+                    </div>
+                </div>
+                <!-- 移除了 Apply & Close 按钮 -->
+            </div>
+
+            <div class="brand-logo">SpringCherry™</div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
